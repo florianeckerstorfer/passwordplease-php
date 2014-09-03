@@ -22,7 +22,7 @@
         }
     ],
     "git-version": "package_version",
-    "main": "bin/app.php",
+    "main": "bin/password-please.php",
     "output": "password-please.phar",
     "stub": true
 }
