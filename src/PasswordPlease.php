@@ -39,7 +39,7 @@ class PasswordPlease
         1 => 'abcdefghijklmnopqrstuvwxyz',
         2 => '0123456789',
         3 => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        4 => '<>,;.:-_#+*!"§$%&/()=?`'
+        4 => ',;.:-_+*#!()=?%&@$"\''
     ];
 
     /**

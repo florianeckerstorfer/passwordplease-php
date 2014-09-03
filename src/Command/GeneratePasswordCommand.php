@@ -36,7 +36,7 @@ class GeneratePasswordCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('generate-password')
+            ->setName('generate')
             ->setDescription('Generates a password of the given length and complexity')
             ->addOption('length', 'l', InputOption::VALUE_REQUIRED, 'Password length', PasswordPlease::DEFAULT_LENGTH)
             ->addOption(
