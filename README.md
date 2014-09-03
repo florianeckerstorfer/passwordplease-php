@@ -3,6 +3,8 @@ Password, Please!
 
 > **Password, Please!** generates secure passwords in PHP. You can use it as a command line application or as a library in your code.
 
+[![Build Status](https://travis-ci.org/florianeckerstorfer/passwordplease-php.svg?branch=master)](https://travis-ci.org/florianeckerstorfer/passwordplease-php)
+
 
 Command Line Application
 ------------------------
