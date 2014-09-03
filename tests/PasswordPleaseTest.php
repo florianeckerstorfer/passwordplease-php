@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of florianeckerstorfer/password-please.
+ *
+ * (c) Florian Eckerstorfer <florian@eckerstorfer.co>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Fe\PasswordPlease;
 
 use \Mockery as m;
@@ -7,7 +16,11 @@ use \Mockery as m;
 /**
  * PasswordPleaseTest
  *
- * @group unit
+ * @package   Fe\PasswordPlease
+ * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright 2014 Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @license   http://opensource.org/licenses/MIT The MIT License
+ * @group     unit
  */
 class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
 {

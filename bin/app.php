@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 /**
@@ -11,10 +12,9 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use Fe\PasswordPlease\PasswordPlease;
+use Symfony\Component\Console\Application;
 
-$factory = new RandomLib\Factory;
-$generator = $factory->getGenerator(new SecurityLib\Strength(SecurityLib\Strength::MEDIUM));
+$console = new Application();
+$console->add(new \Fe\PasswordPlease\Command\GeneratePasswordCommand());
 
-$pp = new PasswordPlease($generator);
-echo $pp->generatePassword(30, PasswordPlease::COMPLEXITY_HIGH)."\n";
+$console->run();

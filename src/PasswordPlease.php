@@ -28,6 +28,9 @@ class PasswordPlease
     const COMPLEXITY_HIGH      = 3;
     const COMPLEXITY_VERY_HIGH = 4;
 
+    const DEFAULT_LENGTH     = 20;
+    const DEFAULT_COMPLEXITY = self::COMPLEXITY_VERY_HIGH;
+
     /** @var Generator */
     private $generator;
 
@@ -66,8 +69,19 @@ class PasswordPlease
      *
      * @return string              Password of the given length and complexity.
      */
-    public function generatePassword($length = 20, $complexity = self::COMPLEXITY_VERY_HIGH)
+    public function generatePassword($length = self::DEFAULT_LENGTH, $complexity = self::DEFAULT_COMPLEXITY)
     {
+        if (!isset($this->characters[$complexity])) {
+            throw new \InvalidArgumentException(sprintf(
+                'The given complexity "%s" does not exist. The following complexities are currently supported: %s',
+                $complexity,
+                implode(', ', array_keys($this->characters))
+            ));
+        }
+        if ($length < 1) {
+            throw new \InvalidArgumentException('Would you be so kind to provide a password length greater than 0.');
+        }
+
         $characters = '';
         for ($i = 1; $i <= $complexity; $i++) {
             $characters .= $this->characters[$i];
