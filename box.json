@@ -1,0 +1,28 @@
+{
+    "alias": "password-please.phar",
+    "chmod": "0755",
+    "directories": ["src"],
+    "files": [
+        "LICENSE",
+        "vendor/herrera-io/json/src/lib/json_version.php",
+        "vendor/herrera-io/phar-update/src/lib/constants.php"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": [
+                "herrera-io",
+                "kherge",
+                "phpunit",
+                "Tests",
+                "mockery",
+                "yaml"
+            ],
+            "in": "vendor"
+        }
+    ],
+    "git-version": "package_version",
+    "main": "bin/app.php",
+    "output": "password-please.phar",
+    "stub": true
+}
