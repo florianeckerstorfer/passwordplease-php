@@ -1,8 +1,7 @@
 Password, Please!
 =================
 
-> **Password, Please!** generates secure passwords in PHP. You can use it as a command line application or as a library
-in your code.
+> **Password, Please!** generates secure passwords in PHP. You can use it as a command line application or as a library in your code.
 
 
 Command Line Application
@@ -71,4 +70,4 @@ Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe.
 License
 -------
 
-MIT, see `LICENSE`.
+The MIT license applies to `florianeckerstorfer/passwordplease-php`. For the full copyright and license information, please view the `LICENSE` file distributed with this source code.
