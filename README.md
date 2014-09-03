@@ -7,7 +7,7 @@ Password, Please!
 Command Line Application
 ------------------------
 
-Downloading the PHAR archive from the [releases page]() page is the easiest way to get the command line application.
+Downloading the PHAR archive from the [releases page](https://github.com/florianeckerstorfer/passwordplease-php/releases) page is the easiest way to get the command line application.
 The other way is to clone this repository and execute the `bin/password-please.php` file.
 
 ```shell
@@ -43,7 +43,7 @@ If you want to use **Password, Please!** in your code you can add the library to
 $ composer require florianeckerstorfer/password-please:@stable
 ```
 
-*Tip: You should replace `@stable` with a specific version from the [releases]() page.*
+*Tip: You should replace `@stable` with a specific version from the [releases](https://github.com/florianeckerstorfer/passwordplease-php/releases) page.*
 
 ### Usage
 
