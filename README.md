@@ -102,6 +102,19 @@ $password = $pp->generatePassword(30, PasswordPlease::COMPLEXITY_HIGH);
 ```
 
 
+Change Log
+----------
+
+### Version 0.2 (4 October 2014)
+
+- Add string alias for complexities
+- Change order of complexities, `1` is now very high and `4` is low
+
+### Version 0.1 (3 September 2014)
+
+- Initial release
+
+
 Author
 ------
 
