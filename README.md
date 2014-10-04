@@ -81,7 +81,7 @@ If you want to use **Password, Please!** in your code you can add the library to
 [Composer](http://getcomposer.org).
 
 ```shell
-$ composer require florianeckerstorfer/florianeckerstorfer/passwordplease-php:@stable
+$ composer require florianeckerstorfer/passwordplease-php:@stable
 ```
 
 *Tip: You should replace `@stable` with a specific version from the [releases](https://github.com/florianeckerstorfer/passwordplease-php/releases) page.*
