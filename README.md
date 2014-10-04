@@ -27,8 +27,8 @@ numbers and special characters. You can change both the length and the complexit
 $ php password-please.phar gen --length=30 --complexity=3
 ```
 
-The length must be greather than `0` and complexity must be a value between `1` (low complexity) and `4`
-(very high complexity). If you're a hasty person, you can use the shorter aliases for the options:
+The length must be greather than `0` and complexity must be a value between `1` (very high complexity) and `4`
+(low complexity). If you're a hasty person, you can use the shorter aliases for the options:
 
 ```shell
 $ php password-please.phar gen -l 30 -c 3
