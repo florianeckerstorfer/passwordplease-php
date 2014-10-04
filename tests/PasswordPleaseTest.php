@@ -54,6 +54,18 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
      */
+    public function generatePasswordReturnsPasswordWithComplexityVeryHighAsString()
+    {
+        foreach (['veryhigh', 'harder'] as $complexity) {
+            $password = $this->pp->generatePassword(20, $complexity);
+            $this->assertRegExp('/[a-zA-Z0-9<>,;.:-_#+*!"§$%&\/\(\)=?`]/', $password);
+        }
+    }
+
+    /**
+     * @test
+     * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     */
     public function generatePasswordReturnsPasswordWithComplexityHigh()
     {
         $password = $this->pp->generatePassword(15, PasswordPlease::COMPLEXITY_HIGH);
@@ -61,6 +73,19 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(15, strlen($password));
         $this->assertRegExp('/[a-zA-Z0-9]/', $password);
         $this->assertRegExp('/[^<>,;.:-_#+*!"§$%&\/\(\)=?`]/', $password);
+    }
+
+    /**
+     * @test
+     * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     */
+    public function generatePasswordReturnsPasswordWithComplexityHighAsString()
+    {
+        foreach (['high', 'hard'] as $complexity) {
+            $password = $this->pp->generatePassword(20, $complexity);
+            $this->assertRegExp('/[a-zA-Z0-9]/', $password);
+            $this->assertRegExp('/[^<>,;.:-_#+*!"§$%&\/\(\)=?`]/', $password);
+        }
     }
 
     /**
@@ -80,6 +105,19 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
      */
+    public function generatePasswordReturnsPasswordWithComplexityMediumAsString()
+    {
+        foreach (['medium', 'normal'] as $complexity) {
+            $password = $this->pp->generatePassword(20, $complexity);
+            $this->assertRegExp('/[a-zA-Z]/', $password);
+            $this->assertRegExp('/[^0-9<>,;.:-_#+*!"§$%&\/\(\)=?`]/', $password);
+        }
+    }
+
+    /**
+     * @test
+     * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     */
     public function generatePasswordReturnsPasswordWithComplexityLow()
     {
         $password = $this->pp->generatePassword(15, PasswordPlease::COMPLEXITY_LOW);
@@ -87,5 +125,18 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(15, strlen($password));
         $this->assertRegExp('/[a-z]/', $password);
         $this->assertRegExp('/[^A-Z0-9<>,;.:-_#+*!"§$%&\/\(\)=?`]/', $password);
+    }
+
+    /**
+     * @test
+     * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     */
+    public function generatePasswordReturnsPasswordWithComplexityLowAsString()
+    {
+        foreach (['high', 'hard'] as $complexity) {
+            $password = $this->pp->generatePassword(20, $complexity);
+            $this->assertRegExp('/[a-z]/', $password);
+            $this->assertRegExp('/[^A-Z0-9<>,;.:-_#+*!"§$%&\/\(\)=?`]/', $password);
+        }
     }
 }

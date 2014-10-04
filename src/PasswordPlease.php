@@ -23,10 +23,10 @@ use RandomLib\Generator;
  */
 class PasswordPlease
 {
-    const COMPLEXITY_LOW       = 1;
-    const COMPLEXITY_MEDIUM    = 2;
-    const COMPLEXITY_HIGH      = 3;
-    const COMPLEXITY_VERY_HIGH = 4;
+    const COMPLEXITY_LOW       = 4;
+    const COMPLEXITY_MEDIUM    = 3;
+    const COMPLEXITY_HIGH      = 2;
+    const COMPLEXITY_VERY_HIGH = 1;
 
     const DEFAULT_LENGTH     = 20;
     const DEFAULT_COMPLEXITY = self::COMPLEXITY_VERY_HIGH;
@@ -36,10 +36,10 @@ class PasswordPlease
 
     /** @var string[] */
     private $characters = [
-        1 => 'abcdefghijklmnopqrstuvwxyz',
-        2 => '0123456789',
-        3 => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        4 => ',;.:-_+*#!()=?%&@$"\''
+        1 => ',;.:-_+*#!()=?%&@$"\'',
+        2 => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        3 => '0123456789',
+        4 => 'abcdefghijklmnopqrstuvwxyz'
     ];
 
     /**
@@ -71,6 +71,8 @@ class PasswordPlease
      */
     public function generatePassword($length = self::DEFAULT_LENGTH, $complexity = self::DEFAULT_COMPLEXITY)
     {
+        $complexity = $this->getComplexityByName($complexity);
+
         if (!isset($this->characters[$complexity])) {
             throw new \InvalidArgumentException(sprintf(
                 'The given complexity "%s" does not exist. The following complexities are currently supported: %s',
@@ -83,10 +85,35 @@ class PasswordPlease
         }
 
         $characters = '';
-        for ($i = 1; $i <= $complexity; $i++) {
+        for ($i = $complexity; $i <= self::COMPLEXITY_LOW; $i++) {
             $characters .= $this->characters[$i];
         }
 
         return $this->generator->generateString($length, $characters);
+    }
+
+    /**
+     * @param string $complexity High-level name of complexity
+     *
+     * @return int Internal complexity ID.
+     */
+    protected function getComplexityByName($complexity)
+    {
+        switch ($complexity) {
+            case 'veryhigh':
+            case 'harder':
+                return self::COMPLEXITY_VERY_HIGH;
+            case 'high':
+            case 'hard':
+                return self::COMPLEXITY_HIGH;
+            case 'medium':
+            case 'normal':
+                return self::COMPLEXITY_MEDIUM;
+            case 'low':
+            case 'easy':
+                return self::COMPLEXITY_LOW;
+        }
+
+        return $complexity;
     }
 }

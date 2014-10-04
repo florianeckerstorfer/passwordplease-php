@@ -34,6 +34,45 @@ The length must be greather than `0` and complexity must be a value between `1` 
 $ php password-please.phar gen -l 30 -c 3
 ```
 
+Instead of using the numeric identifier for the complexity, you can also use a high-level string description of the complexity. The following table details the available complexities, the characters used in it and the high-level names:
+
+<table>
+    <thead>
+        <tr>
+            <th>Complexity</th>
+            <th>Level</th>
+            <th>Alias</th>
+            <th>Characters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>VERY_HIGH</code></td>
+            <td><code>1</code></td>
+            <td><code>veryhigh</code>, <code>harder</code></td>
+            <td><code>a-zA-Z0-9,;.:-_+*#!()=?%&@$"'</code></td>
+        </tr>
+        <tr>
+            <td><code>HIGH</code></td>
+            <td><code>2</code></td>
+            <td><code>high</code>, <code>hard</code></td>
+            <td><code>a-zA-Z0-9</code></td>
+        </tr>
+        <tr>
+            <td><code>MEDIUM</code></td>
+            <td><code>3</code></td>
+            <td><code>medium</code>, <code>normal</code></td>
+            <td><code>a-zA-Z</code></td>
+        </tr>
+        <tr>
+            <td><code>LOW</code></td>
+            <td><code>4</code></td>
+            <td><code>low</code>, <code>easy</code></td>
+            <td><code>a-z</code></td>
+        </tr>
+    </tbody>
+</table>
+
 
 Library
 -------
