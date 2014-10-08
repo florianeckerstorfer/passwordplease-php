@@ -1,4 +1,4 @@
-Password, Please!
+<img src="https://florian.ec/img/password-please/logo.png" alt="Password Please">
 =================
 
 > **Password, Please!** generates secure passwords in PHP. You can use it as a command line application or as a library in your code.
