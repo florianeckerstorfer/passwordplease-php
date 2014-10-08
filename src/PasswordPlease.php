@@ -44,6 +44,8 @@ class PasswordPlease
 
     /**
      * @param Generator $generator
+     *
+     * @codeCoverageIgnore
      */
     public function __construct(Generator $generator)
     {
@@ -52,6 +54,8 @@ class PasswordPlease
 
     /**
      * @return Generator
+     *
+     * @codeCoverageIgnore
      */
     public function getGenerator()
     {

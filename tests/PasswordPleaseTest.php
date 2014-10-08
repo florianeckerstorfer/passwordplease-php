@@ -41,6 +41,7 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     * @covers Fe\PasswordPlease\PasswordPlease::getComplexityByName()
      */
     public function generatePasswordReturnsPasswordWithDefaultParameters()
     {
@@ -53,6 +54,7 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     * @covers Fe\PasswordPlease\PasswordPlease::getComplexityByName()
      */
     public function generatePasswordReturnsPasswordWithComplexityVeryHighAsString()
     {
@@ -65,6 +67,7 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     * @covers Fe\PasswordPlease\PasswordPlease::getComplexityByName()
      */
     public function generatePasswordReturnsPasswordWithComplexityHigh()
     {
@@ -78,6 +81,7 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     * @covers Fe\PasswordPlease\PasswordPlease::getComplexityByName()
      */
     public function generatePasswordReturnsPasswordWithComplexityHighAsString()
     {
@@ -91,6 +95,7 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     * @covers Fe\PasswordPlease\PasswordPlease::getComplexityByName()
      */
     public function generatePasswordReturnsPasswordWithComplexityMedium()
     {
@@ -104,6 +109,7 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     * @covers Fe\PasswordPlease\PasswordPlease::getComplexityByName()
      */
     public function generatePasswordReturnsPasswordWithComplexityMediumAsString()
     {
@@ -117,6 +123,7 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     * @covers Fe\PasswordPlease\PasswordPlease::getComplexityByName()
      */
     public function generatePasswordReturnsPasswordWithComplexityLow()
     {
@@ -130,13 +137,42 @@ class PasswordPleaseTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     * @covers Fe\PasswordPlease\PasswordPlease::getComplexityByName()
      */
     public function generatePasswordReturnsPasswordWithComplexityLowAsString()
     {
-        foreach (['high', 'hard'] as $complexity) {
+        foreach (['low', 'easy'] as $complexity) {
             $password = $this->pp->generatePassword(20, $complexity);
             $this->assertRegExp('/[a-z]/', $password);
             $this->assertRegExp('/[^A-Z0-9<>,;.:-_#+*!"§$%&\/\(\)=?`]/', $password);
+        }
+    }
+
+    /**
+     * @test
+     * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     */
+    public function generatePasswordShouldThrowAnExceptionIfThePasswordLengthIsSmallerThanOne()
+    {
+        try {
+            $this->pp->generatePassword(0);
+            $this->assertTrue(false);
+        } catch (\InvalidArgumentException $e) {
+            $this->assertTrue(true);
+        }
+    }
+
+    /**
+     * @test
+     * @covers Fe\PasswordPlease\PasswordPlease::generatePassword()
+     */
+    public function generatePasswordShouldThrowAnExceptionIfTheComplexityIsUnkown()
+    {
+        try {
+            $this->pp->generatePassword(20, 'invalid');
+            $this->assertTrue(false);
+        } catch (\InvalidArgumentException $e) {
+            $this->assertTrue(true);
         }
     }
 }
